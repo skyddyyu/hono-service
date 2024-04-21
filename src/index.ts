@@ -8,6 +8,10 @@ const app = new Hono()
 app.get('/', (c) => {
     return c.text('Hello Hono!')
 })
+app.get('/hello', (c) => {
+    return c.json({hello: 'hono'})
+})
+
 app.post('/record', async (c) => {
     const body = await c.req.json();
     const record = await prisma.record.create({
